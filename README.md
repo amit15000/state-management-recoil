@@ -18,3 +18,18 @@ $$ Write Promise is JavaScript $$
         }, 5000)
        ).then((res) => console.log(res));
        ```
+
+
+## Array.find() method ##
+```
+return todos.find((todo)=>todo.id===requiredID)
+```
+
+```
+    for (let i = 0; i < todos.length; i++) {
+      if (todos[i].id === requiredID) {
+        foundTodo = todos[i];
+      }
+      return foundTodo;
+    }
+```

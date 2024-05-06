@@ -7,6 +7,12 @@ type Props = {
 
 function Todo({ id }: Props) {
   const todowithSpecificId = useRecoilValue(todosAtomFamily(id));
-  return <div>todo</div>;
+  return (
+    <div>
+      <p>Title : {todowithSpecificId?.id}</p>
+      <p>Title : {todowithSpecificId?.title}</p>
+      <p>Title : {todowithSpecificId?.description}</p>
+    </div>
+  );
 }
 export default Todo;

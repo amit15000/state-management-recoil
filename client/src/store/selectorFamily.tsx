@@ -6,10 +6,14 @@ export const todoSelectorFamily = atomFamily({
   default: selectorFamily({
     key: "todosSelectorFamily",
     get: (id) => async () => {
-      const res = await axios.get(
-        `http://localhost:4000/todos?id=${String(id)}`
-      );
-      return res.data;
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/todos?id=${String(id)}`
+        );
+        return res.data;
+      } catch (err) {
+        return "No Todo Found";
+      }
     },
   }),
 });

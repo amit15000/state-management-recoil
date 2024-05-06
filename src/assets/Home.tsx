@@ -1,15 +1,22 @@
 import { useRecoilValue } from "recoil";
-import { todosAtom } from "../store/todosAtom";
+import { todosAsyncAtom } from "../store/asyncAtom";
+import { totalNotificationSelector } from "../store/todosAtom";
 
 function Home() {
-  const notifs = useRecoilValue(todosAtom);
+  const notifs = useRecoilValue(todosAsyncAtom);
 
   return (
     <div className="App">
-      <button>My Network ({notifs.myNetworks})</button>
+      <button>
+        My Network
+        <span className="noti">
+          ({notifs.myNetworks > 99 ? "99+" : notifs.notification})
+        </span>
+      </button>
       <button>Jobs ({notifs.jobs}) </button>
       <button>Message ({notifs.messagin})</button>
       <button>Notifications ({notifs.notification})</button>
+      <button>Me ({useRecoilValue(totalNotificationSelector)})</button>
     </div>
   );
 }

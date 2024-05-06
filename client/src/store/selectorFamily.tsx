@@ -7,6 +7,8 @@ export const todoSelectorFamily = atomFamily({
     key: "todosSelectorFamily",
     get: (id) => async () => {
       try {
+        //Add 3 sec time delay
+        await new Promise((r) => setTimeout(r, 3000));
         const res = await axios.get(
           `http://localhost:4000/todos?id=${String(id)}`
         );

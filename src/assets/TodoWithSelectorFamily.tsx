@@ -1,5 +1,16 @@
+import { useRecoilState } from "recoil";
+import { todoSelectorFamily } from "../store/selectorFamily";
+
 function TodoWithSelectorFamily({ id }: { id: number }) {
-  return <div>TodoWithSelectorFamily</div>;
+  const [todo, setTodo] = useRecoilState(todoSelectorFamily(id));
+
+  return (
+    <div>
+      <p>Id : {todo.id}</p>
+      <p>Title : {todo.title}</p>
+      <p>Description : {todo.description}</p>
+    </div>
+  );
 }
 
 export default TodoWithSelectorFamily;

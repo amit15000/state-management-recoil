@@ -5,11 +5,11 @@ export const todoSelectorFamily = atomFamily({
   key: "todosAtomFamilyWithSelectorFamily",
   default: selectorFamily({
     key: "todosSelectorFamily",
-    get:
-      (id) =>
-      async ({ get }) => {
-        const res = await get(axios.get(`http://localhost:4000/todos/${id}`);
-        return res.data;
-      },
+    get: (id) => async () => {
+      const res = await axios.get(
+        `http://localhost:4000/todos?id=${String(id)}`
+      );
+      return res.data;
+    },
   }),
 });
